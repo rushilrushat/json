@@ -9,10 +9,10 @@ if (isset($_REQUEST['status'])) {
         $sql="UPDATE `status_tbl` SET `motor_status`='$ststus' WHERE 1";
         $inserted=mysqli_query($db->connect(),$sql);
         if ($inserted==1) {
-            $response["sucess"] = 's';
+            $response["sucess"] = 1;
             echo json_encode($response);
         } else {
-            $response["sucess"] = 'n';
+            $response["sucess"] = 0;
             echo json_encode($response);
             exit();
         }
