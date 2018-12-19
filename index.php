@@ -1,18 +1,9 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db="project";
-$responce="null";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $db);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+header('Content-type: application/json');
+require_once __DIR__ . '/config/db_connect.php';
+$db = new DB_CONNECT();
 $sql="select * from status_tbl";
-$result = $conn->query($sql);
+$result =mysqli_query($db->connect(), $sql);
 $responce['data'] = array();
 if ($result->num_rows > 0) {
     // output data of each row
